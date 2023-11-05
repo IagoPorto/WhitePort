@@ -1,4 +1,4 @@
-FROM python:3.13.0a1-bookworm
+FROM python:3.9
 
 RUN pip install flask psycopg2
 
@@ -8,4 +8,4 @@ COPY . /app
 
 EXPOSE 5000
 
-CMD ["python", "app.py"]
+CMD ["./wait-for-it.sh", "db:5432", "--", "python", "app/main.py"]

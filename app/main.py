@@ -50,7 +50,16 @@ def insert_whiteport_data(type, date, file):
 if __name__ == "__main__":
     print("Initializing")
     results = get_results()
+if  __name__ == "__main__":
+    print("Initializating")
+    conn = psycopg2.connect(**db_params)
+    cur = conn.cursor()
+    query = sql.SQL("SELECT * FROM " + os.environ["POSTGRES_TABLE"])  
+    cur.execute(query)
+    results = cur.fetchall()
     for row in results:
         print(row)
 
 
+    cur.close()
+    conn.close()

@@ -1,6 +1,7 @@
 import os
 import psycopg2
 from psycopg2 import sql
+from api.methods import getWhiteport
 
 db_params = {
     "host": os.environ.get("DB_HOST", "db"), 
@@ -60,6 +61,8 @@ if  __name__ == "__main__":
     for row in results:
         print(row)
 
+    result = getWhiteport
+    print(result)
 
     cur.close()
     conn.close()

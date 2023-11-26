@@ -11,6 +11,7 @@ app = Flask(__name)
 @app.route('/whiteport', methods=['GET', 'POST'])
 
 def getWhiteport():
+    print("ha entrado en el metodo get")
     if request.method == 'GET':
         try:
             results = get_results()
@@ -26,14 +27,14 @@ def getWhiteport():
             return jsonify(whiteport_data)
         except Exception as e:
             return str(e), 500  
-def postWhiteport():
+def postWhiteport(type,date,file):
 
     if request.method == 'POST':
         try:
-                data = request.get_json()
-                type = data.get("type")
-                date = data.get("date")
-                file = data.get("file").encode('utf-8')
+                # data = request.get_json()
+                # type = data.get("type")
+                # date = data.get("date")
+                # file = data.get("file").encode('utf-8')
 
                 response, status_code = insert_whiteport_data(type, date, file)
 
@@ -82,3 +83,10 @@ def deleteWhiteport(id):
             return str(e), 500  
 
        
+if __name__ == "__main__":
+    print("Methods")
+    results = get_results()
+if  __name__ == "__main__":
+    print("Methods")
+    result = getWhiteport
+    print(result)

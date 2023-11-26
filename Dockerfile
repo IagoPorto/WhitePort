@@ -8,4 +8,4 @@ COPY . /app
 
 EXPOSE 5000
 
-CMD ["./wait-for-it.sh", "db:5432", "--", "python", "app/main.py"]
+CMD ["./wait-for-it.sh", "db:5432", "--", "python", "app/main.py","api/methods.py"]
